@@ -56,33 +56,3 @@ This project was created as a beginner web development project.
 
 Lavanya Parekh
 Computer Engineering Student
-
-## HTML Tags Used
-
-- <html>
-- <head>
-- <title>
-- <body>
-- <header>
-- <footer>
-- <h1>
-- <h2>
-- <h3>
-- <p>
-- <a>
-- <img>
-- <div>
-- <hr>
-- <br>
-- <form>
-- <label>
-- <input>
-- <select>
-- <option>
-- <textarea>
-- <table>
-- <tr>
-- <th>
-- <td>
-- <ul>
-- <li>
