@@ -41,7 +41,7 @@ This project was created as a beginner web development project.
 
 1. Download or clone the project.
 2. Open the project folder.
-3. Open `index.html` in any web browser.
+3. Open `a.html` in any web browser.
 4. Use the navigation bar to visit other pages.
 
 
