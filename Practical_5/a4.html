@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Register - StudentHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<div class="header-top">
+<img src="Logo_StudentHub.png" alt="StudentHub Logo" class="logo">
+<h1>StudentHub</h1>
+<button id="themeBtn" type="button" aria-label="Toggle dark mode">🌙</button>
+</div>
+<nav>
+<a href="a.html">HOME</a>
+<a href="a1.html">ABOUT</a>
+<a href="a3.html">CONTACT</a>
+<a href="a4.html">REGISTER</a>
+<a href="a5.html">LOGIN</a>
+<a href="a6.html">DASHBOARD</a>
+<a href="a7.html">EVENTS</a>
+<a href="a8.html">PROFILE</a>
+<a href="a9.html">FAQ</a>
+<a href="a10.html">FEEDBACK</a>
+</nav>
+</header>
+<section class="register">
+<h2>Student Registration</h2>
+<p>Create your StudentHub account.</p>
+<p id="successMsg" style="color:#28a745;font-weight:bold;" role="status"></p>
+<form id="regForm" novalidate>
+<div class="form-group">
+<label for="name">Full Name</label>
+<input type="text" id="name" name="name" placeholder="Full Name" autocomplete="name" required>
+<small id="nameError" style="color:#dc3545;" role="alert"></small>
+</div>
+<div class="form-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" placeholder="Email Address" autocomplete="email" required>
+<small id="emailError" style="color:#dc3545;" role="alert"></small>
+</div>
+<div class="form-group">
+<label for="mobile">Mobile Number</label>
+<input type="tel" id="mobile" name="mobile" placeholder="10-Digit Mobile Number" maxlength="10" autocomplete="tel" required>
+<small id="mobileError" style="color:#dc3545;" role="alert"></small>
+</div>
+<div class="form-group">
+<label for="password">Password</label>
+<input type="password" id="password" name="password" placeholder="Password" minlength="8" autocomplete="new-password" required>
+<small id="passError" style="color:#dc3545;" role="alert"></small>
+</div>
+<div class="form-group">
+<label for="confirmPass">Confirm Password</label>
+<input type="password" id="confirmPass" name="confirmPass" placeholder="Confirm Password" autocomplete="new-password" required>
+<small id="confirmPassError" style="color:#dc3545;" role="alert"></small>
+</div>
+<div class="form-group">
+<label for="course">Course</label>
+<select id="course" name="course" required>
+<option value="">-- Select Course --</option>
+<option value="B.Tech">B.Tech</option>
+<option value="BCA">BCA</option>
+<option value="B.Sc">B.Sc</option>
+<option value="Diploma">Diploma</option>
+</select>
+<small id="courseError" style="color:#dc3545;" role="alert"></small>
+</div>
+<div class="form-group">
+<fieldset>
+<legend>Year of Study</legend>
+<label><input type="radio" name="year" value="1"> 1st</label>
+<label><input type="radio" name="year" value="2"> 2nd</label>
+<label><input type="radio" name="year" value="3"> 3rd</label>
+<label><input type="radio" name="year" value="4"> 4th</label>
+</fieldset>
+<small id="yearError" style="color:#dc3545;" role="alert"></small>
+</div>
+<div class="form-group">
+<fieldset>
+<legend>Gender</legend>
+<label><input type="radio" name="gender" value="Male"> Male</label>
+<label><input type="radio" name="gender" value="Female"> Female</label>
+<label><input type="radio" name="gender" value="Other"> Other</label>
+</fieldset>
+<small id="genderError" style="color:#dc3545;" role="alert"></small>
+</div>
+<div class="form-group">
+<label>
+<input type="checkbox" id="terms" name="terms" required>
+I accept the terms and conditions
+</label>
+<small id="termsError" style="color:#dc3545;" role="alert"></small>
+</div>
+<button type="submit">Register</button>
+</form>
+<p>Already have an account?
+<a href="a5.html">Login Here</a>
+</p>
+</section>
+<footer>
+<p>© 2026 StudentHub | All Rights Reserved</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
