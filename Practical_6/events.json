@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Hackathon 2026",
+        "category": "Technical",
+        "date": "15 August 2026",
+        "venue": "Main Auditorium",
+        "description": "Show your coding skills and compete with talented students."
+    },
+    {
+        "name": "Sports Week",
+        "category": "Sports",
+        "date": "22 August 2026",
+        "venue": "University Ground",
+        "description": "Participate in indoor and outdoor sports competitions."
+    },
+    {
+        "name": "Cultural Fest",
+        "category": "Cultural",
+        "date": "30 August 2026",
+        "venue": "Open Air Theatre",
+        "description": "Enjoy music, dance, drama and exciting cultural performances."
+    },
+    {
+        "name": "Web Development Workshop",
+        "category": "Workshop",
+        "date": "5 September 2026",
+        "venue": "Computer Lab 1",
+        "description": "Learn the basics of modern web development."
+    },
+    {
+        "name": "Coding Competition",
+        "category": "Technical",
+        "date": "10 September 2026",
+        "venue": "Computer Lab 2",
+        "description": "Test your programming and problem-solving skills."
+    },
+    {
+        "name": "Football Tournament",
+        "category": "Sports",
+        "date": "15 September 2026",
+        "venue": "University Ground",
+        "description": "Compete with different student teams in a football tournament."
+    },
+    {
+        "name": "Dance Competition",
+        "category": "Cultural",
+        "date": "20 September 2026",
+        "venue": "Open Air Theatre",
+        "description": "Show your talent and creativity through dance."
+    },
+    {
+        "name": "Java Programming Workshop",
+        "category": "Workshop",
+        "date": "25 September 2026",
+        "venue": "Computer Lab 3",
+        "description": "Improve your Java programming skills through practical activities."
+    },
+    {
+        "name": "AI Seminar",
+        "category": "Technical",
+        "date": "1 October 2026",
+        "venue": "Seminar Hall",
+        "description": "Learn about the latest developments in Artificial Intelligence."
+    },
+    {
+        "name": "Music Night",
+        "category": "Cultural",
+        "date": "5 October 2026",
+        "venue": "University Auditorium",
+        "description": "Enjoy an evening filled with music and performances."
+    }
+]
