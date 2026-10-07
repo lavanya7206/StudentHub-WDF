@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events - StudentHub</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .event-controls {
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .event-controls input,
+        .event-controls select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .event-controls input {
+            width: 40%;
+        }
+        .event-controls select {
+            width: 25%;
+        }
+        #eventContainer {
+            width: 90%;
+            margin: 25px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .event-card {
+            width: 240px;
+            min-height: 200px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            text-align: left;
+        }
+        .event-card h3 {
+            color: #123A63;
+            margin-top: 0;
+        }
+        .event-card p {
+            margin: 10px 0;
+        }
+        .pagination {
+            text-align: center;
+            margin: 25px;
+        }
+        .pagination button {
+            padding: 8px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2f75b5;
+            color: white;
+            cursor: pointer;
+        }
+        .pagination button:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-top">
+        <img src="Logo_StudentHub.png"alt="Logo"class="logo">
+        <h1>StudentHub</h1>
+        <button id="themeBtn">🌙</button>
+    </div>
+    <nav>
+        <a href="a.html">HOME</a>
+        <a href="a1.html">ABOUT</a>
+        <a href="a3.html">CONTACT</a>
+        <a href="a4.html">REGISTER</a>
+        <a href="a5.html">LOGIN</a>
+        <a href="a6.html">DASHBOARD</a>
+        <a href="a7.html">EVENTS</a>
+        <a href="a8.html">PROFILE</a>
+        <a href="a9.html">FAQ</a>
+        <a href="a10.html">FEEDBACK</a>
+    </nav>
+</header>
+<section class="events">
+    <h2>Upcoming University Events</h2>
+    <p>Stay updated with the latest events happening on campus.</p>
+    <div class="event-controls">
+        <input type="text"id="searchBox"placeholder="Search events...">
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="Technical">Technical</option>
+            <option value="Sports">Sports</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Workshop">Workshop</option>
+        </select>
+        <select id="sortSelect">
+            <option value="default">Sort By</option>
+            <option value="nameAsc">Name A-Z</option>
+            <option value="nameDesc">Name Z-A</option>
+            <option value="dateAsc">Date: Earliest First</option>
+            <option value="dateDesc">Date: Latest First</option>
+        </select>
+    </div>
+    <div id="eventContainer"></div>
+    <div class="pagination">
+        <button id="prevBtn">Previous</button>
+        <span id="pageNumber">Page 1</span>
+        <button id="nextBtn">Next</button>
+    </div>
+</section>
+<footer>
+    <p>© 2026 StudentHub | All Rights Reserved</p>
+</footer>
+<script>
+    let events = [];
+    let filteredEvents = [];
+    let currentPage = 1;
+    const eventsPerPage = 4;
+    fetch("http://127.0.0.1:5500/events.json")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            events = data;
+            filteredEvents = data;
+            displayEvents();
+        })
+        .catch(function(error) {
+            console.log(error);
+            document.getElementById("eventContainer").innerHTML ="<h3>Unable to load events.</h3>";
+        });
+    function displayEvents() {
+        const container =document.getElementById("eventContainer");
+        container.innerHTML = "";
+        const start =(currentPage - 1) * eventsPerPage;
+        const end =start + eventsPerPage;
+        const pageEvents = filteredEvents.slice(start, end);
+        if (pageEvents.length === 0) {
+            container.innerHTML ="<h3>No events found.</h3>";
+            updatePagination();
+            return;
+        }
+        pageEvents.forEach(function(event) {
+            const card =document.createElement("div");
+            card.className = "event-card";
+            card.innerHTML = "<h3>" + event.name +"</h3>" +"<p><strong>Category:</strong> " + event.category +"</p>" +"<p><strong>Date:</strong> " +event.date +"</p>" +"<p><strong>Venue:</strong> " +event.venue +"</p>" +"<p>" + event.description +"</p>";
+            container.appendChild(card);
+        });
+        updatePagination();
+    }
+    function applyChanges() {
+        const searchText =document.getElementById("searchBox").value.toLowerCase();
+        const category =document.getElementById("categoryFilter").value;
+        const sortType =document.getElementById("sortSelect").value;
+        filteredEvents =events.filter(function(event) {
+                return event.name.toLowerCase().includes(searchText);
+            });
+        if (category !== "all") {
+            filteredEvents =filteredEvents.filter(function(event) {
+                    return event.category === category;
+                });
+        }
+        if (sortType === "nameAsc") {
+            filteredEvents.sort(function(a, b) {
+                return a.name.localeCompare(b.name);
+            });
+        }
+        else if (sortType === "nameDesc") {
+            filteredEvents.sort(function(a, b) {
+                return b.name.localeCompare(a.name);
+            });
+        }
+        else if (sortType === "dateAsc") {
+            filteredEvents.sort(function(a, b) {
+                return new Date(a.date) -new Date(b.date);
+            });
+        }
+        else if (sortType === "dateDesc") {
+            filteredEvents.sort(function(a, b) {
+                return new Date(b.date) -new Date(a.date);
+            });
+        }
+        currentPage = 1;
+        displayEvents();
+    }
+    document
+        .getElementById("searchBox")
+        .addEventListener("input", function() {
+            applyChanges();
+        });
+    document
+        .getElementById("categoryFilter")
+        .addEventListener("change", function() {
+            applyChanges();
+        });
+    document
+        .getElementById("sortSelect")
+        .addEventListener("change", function() {
+            applyChanges();
+        });
+    document
+        .getElementById("prevBtn")
+        .addEventListener("click", function() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayEvents();
+            }
+        });
+    document
+        .getElementById("nextBtn")
+        .addEventListener("click", function() {
+            const totalPages = Math.ceil(
+                    filteredEvents.length /eventsPerPage
+                );
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayEvents();
+            }
+        });
+    function updatePagination() {
+        let totalPages = Math.ceil(
+                filteredEvents.length /eventsPerPage
+            );
+        if (totalPages === 0) {
+            totalPages = 1;
+        }
+        document.getElementById("pageNumber").innerText ="Page " +currentPage +" of " + totalPages;
+        document.getElementById("prevBtn").disabled =currentPage === 1;
+        document.getElementById("nextBtn").disabled =currentPage === totalPages;
+    }
+    document
+        .getElementById("themeBtn")
+        .addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+        });
+</script>
+</body>
+</html>
