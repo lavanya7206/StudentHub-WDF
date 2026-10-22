@@ -121,5 +121,3 @@ Use these accounts only if they have been created in your local database.
 - **Academic Year:** 2026–27
 
 ---
-
-*StudentHub is an academic project developed to demonstrate full-stack web development concepts through practical implementation.*
